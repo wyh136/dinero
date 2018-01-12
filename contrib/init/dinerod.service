@@ -1,0 +1,26 @@
+[Unit]
+Description=Dinero's distributed currency daemon
+After=network.target
+
+[Service]
+User=dinero
+Group=dinero
+
+Type=forking
+PIDFile=/var/lib/dinerod/dinerod.pid
+
+ExecStart=/usr/bin/dinerod -daemon -pid=/var/lib/dinerod/dinerod.pid \
+          -conf=/etc/dinero/dinero.conf -datadir=/var/lib/dinerod
+
+ExecStop=-/usr/bin/dinero-cli -conf=/etc/dinero/dinero.conf \
+         -datadir=/var/lib/dinerod stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Dinero
+Comment=Dinero P2P Cryptocurrency
+Exec=dinero-qt %u
+Terminal=false
+Type=Application
+Icon=dinero128
+MimeType=x-scheme-handler/dinero;
+Categories=Office;Finance;
+Name[en_US]=dinero-qt.desktop
